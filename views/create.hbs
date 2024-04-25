@@ -1,0 +1,39 @@
+<h1 class="text-light text-center">Agregar Deporte</h1>
+
+<section class="d-flex">
+    <article class="col-6">
+        <form action="/" method="POST">
+            <div class="mb-3">
+                <label for="nombre-deporte" class="form-label">Nombre: </label>
+                <input type="text" class="form-control w-75" id="nombre" aria-describedby="nombre" name="nombre">
+            </div>
+
+            <div class="mb-3">
+                <label for="precio-deporte" class="form-label">Precio: </label>
+                <input type="number" class="form-control w-75" id="precio" aria-describedby="precio" name="precio">
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </form>
+    </article>
+
+    <article class="col-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+
+            {{#each archivoJson}}
+                <tbody>
+                    <tr>
+                        <td>{{this.nombre}}</td>
+                        <td>${{this.precio}}</td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+    </article>
+</section>

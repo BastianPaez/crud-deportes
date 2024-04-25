@@ -2,6 +2,8 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import path, { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import createRoute from './routes/create.route.js';
+import readRoute from './routes/read.route.js';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -19,10 +21,8 @@ app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set('views',path.join(__dirname, '/views'));
 
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
+app.use('/', createRoute);
+app.use('/read', readRoute);
 
 app.listen(3000, ()=>{
     console.log('http://localhost:3000')
