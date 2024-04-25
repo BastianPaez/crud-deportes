@@ -31,8 +31,9 @@ router.post('/', async (req, res) => {
     archivoJson = archivoJson.filter( item => item.id !== id)
 
     deporte.precio = precio;
+    
+    archivoJson = [...archivoJson, deporte]
 
-    archivoJson.push(deporte);
 
 
     await writeFile('./data/deportes.json', JSON.stringify(archivoJson))

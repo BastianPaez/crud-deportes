@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { nanoid } from "nanoid";
 import { readFile, writeFile} from "node:fs/promises";
 
 
@@ -14,30 +13,30 @@ router.get('/', async (req, res) => {
         console.log(err)
     }
 
-    res.render('create', {archivoJson})
+    res.render('delete', {archivoJson})
 })
-
 
 router.post('/', async (req, res) => {
-    const {nombre, precio} = req.body
-    const deporte = {nombre, precio, id : nanoid()}
-
     let archivoJson = '';
+    const id = req.body.deporte;
+    const precio = req.body.precio;
 
     try {
-        archivoJson = JSON.parse(await readFile('./data/deportes.json', 'utf-8'));
-    } catch (err){
+        archivoJson = JSON.parse(await readFile('./data/deportes.json'))
+    } catch (err) {
         console.log(err)
     }
-
-    archivoJson = [...archivoJson, deporte]
     
+    archivoJson = archivoJson.filter( item => item.id !== id)
+
+
+
+
     await writeFile('./data/deportes.json', JSON.stringify(archivoJson))
 
-    res.render('create', {archivoJson})
+
+    res.render('delete', {archivoJson})
 })
-
-
 
 
 export default router;

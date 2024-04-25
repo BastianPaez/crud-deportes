@@ -1,9 +1,7 @@
-<h1 class="text-light text-center">Editar deportes</h1>
-
-
+<h1> Eliminar deporte </h1>
 <section class="d-flex">
     <article class="col-6">
-        <form action="/update" method="POST">
+        <form action="/delete" method="POST">
             <div class="mb-3">
                 <label for="nombre-deporte" class="form-label">Nombre: </label>
                 <select class="form-select w-75" aria-label="Default select example" name="deporte">
@@ -14,12 +12,7 @@
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label for="precio-deporte" class="form-label">Nuevo precio: </label>
-                <input type="number" class="form-control w-75" id="precio" aria-describedby="precio" name="precio">
-            </div>
-
-            <button type="submit" class="btn btn-primary mb-3">Editar</button>
+            <button type="submit" class="btn btn-primary mb-3">Eliminar</button>
         </form>
     </article>
 
