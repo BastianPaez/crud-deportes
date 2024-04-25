@@ -1,0 +1,45 @@
+<h1 class="text-light text-center">Editar deportes</h1>
+
+
+<section class="d-flex">
+    <article class="col-6">
+        <form action="/update" method="POST">
+            <div class="mb-3">
+                <label for="nombre-deporte" class="form-label">Nombre: </label>
+                <select class="form-select w-75" aria-label="Default select example" name="deporte">
+                    <option selected disabled>Selecciona un deporte</option>
+                    {{#each archivoJson}}
+                    <option value="{{this.id}}">{{this.nombre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="precio-deporte" class="form-label">Nuevo precio: </label>
+                <input type="number" class="form-control w-75" id="precio" aria-describedby="precio" name="precio">
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </form>
+    </article>
+
+    <article class="col-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+
+            {{#each archivoJson}}
+            <tbody>
+                <tr>
+                    <td>{{this.nombre}}</td>
+                    <td>${{this.precio}}</td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+    </article>
+</section>
